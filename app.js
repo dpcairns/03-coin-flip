@@ -1,3 +1,5 @@
+import { makeCatBox } from './utils.js';
+
 // import functions and grab DOM elements
 const button = document.querySelector('#guess-button');
 const current = document.querySelector('#current');
@@ -10,30 +12,50 @@ let winsData = 0;
 let totalGuesses = 0;
 
 // set event listeners to update state and DOM
-button.addEventListener('click', () => {
-    totalGuesses++;
-    // how do i get the value of the currently selected radio button
-    // hint: querySelector
-    const checkedRadio = document.querySelector('input:checked');
-    const userGuess = checkedRadio.value;
 
-    // generate a random correct answer: heads or tails
-    const numberLessThan50 = Math.random() < .5;
-
-    const correctFlip = numberLessThan50 ? 'heads' : 'tails';
-
-    // compare the user guess to the correct answer
-    if (correctFlip === userGuess) {
-        current.textContent = 'YOU WON';
-
-        winsData++;
-    } else {
-        current.textContent = 'YOU LOST';
+const cats = [
+    {
+        name: 'Tabby',
+        weight: 4,
+        url: 'http://placekitten.com/300/300' 
+    },
+    {
+        name: 'Rabby',
+        weight: 2,
+        url: 'http://placekitten.com/400/300' 
+    },
+    {
+        name: 'Labby',
+        weight: 1,
+        url: 'http://placekitten.com/300/100' 
+    },
+    {
+        name: 'Yabby',
+        weight: 5,
+        url: 'http://placekitten.com/200/200' 
+    },
+    {
+        name: 'Crabby',
+        weight: 5,
+        url: 'http://placekitten.com/500/500' 
+    },
+    {
+        name: 'Prabby',
+        weight: 5,
+        url: 'http://placekitten.com/900/900' 
+    },
+    {
+        name: 'Wabby',
+        weight: 5,
+        url: 'http://placekitten.com/900/900' 
     }
+];
 
-    const lossesData = totalGuesses - winsData;
+const catsDiv = document.getElementById('cats');
 
-    total.textContent = 'total: ' + totalGuesses;
-    wins.textContent = 'wins: ' + winsData;
-    losses.textContent = 'losses: ' + lossesData;
-});
+for (let i = 0; i < cats.length; i++) {
+    const currentCat = cats[i];
+    const box = makeCatBox(currentCat);   
+    
+    catsDiv.append(box);
+}

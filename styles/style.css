@@ -125,3 +125,16 @@ footer {
   input:checked + img {
       border: solid 5px pink
   }
+
+  .cat-box {
+      border: dotted 2px pink;
+      text-align: center;
+      padding: 10px;
+      background-color: lightblue;
+  }
+
+#cats {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
